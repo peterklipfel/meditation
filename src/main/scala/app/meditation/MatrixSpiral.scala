@@ -38,8 +38,8 @@ object MatrixSpiral {
   def goLeft(matrix: Array[Array[Int]], i: Int, j: Int, max_col: Int, min_col: Int, max_row: Int, min_row: Int): Unit = {
     if(check_finish(matrix, max_col, min_col, max_row, min_row)){ return }
     println(matrix(i)(j))
-    if(j == max_col) {
-      goUp(matrix, i-1, j, max_col-1, min_col, max_row, min_row)
+    if(j == min_col) {
+      goUp(matrix, i-1, j, max_col, min_col+1, max_row, min_row)
     } else {
       goLeft(matrix, i, j-1, max_col, min_col, max_row, min_row)
     }
@@ -48,8 +48,8 @@ object MatrixSpiral {
   def goUp(matrix: Array[Array[Int]], i: Int, j: Int, max_col: Int, min_col: Int, max_row: Int, min_row: Int): Unit = {
     if(check_finish(matrix, max_col, min_col, max_row, min_row)){ return }
     println(matrix(i)(j))
-    if(j == max_col) {
-      goRight(matrix, i, j+1, max_col, min_col, max_row, min_row)
+    if(i - min_row < 2) {
+      goRight(matrix, i, j+1, max_col, min_col, max_row, min_row+1)
     } else {
       goUp(matrix, i-1, j, max_col, min_col, max_row, min_row)
     }
